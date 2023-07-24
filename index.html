@@ -35,11 +35,12 @@
 
 
     <body>
-        <py-script>                 
+        <py-script>
 
         import random, sys, os      
         from pyscript import Element
         from js import document     
+        from js import window       
         from os.path import exists  
 
         wordList = ["abate", "abbey", "abbot", "abets", "abhor", "abide", "abode", "abort", 
@@ -472,11 +473,23 @@
         col=1                                     
         win = False                               
         start = False                             
-        guess = ""                                
-        word  = "."                               
-        allowed = True                            
+        guess = ""                                # current user guess                        
+        word  = "."                               # secret word                               
+        code = ""                                 # code for secret word (found in url)       
+        allowed = True                            # True if word is in allowed list           
+        secret = True                             # True if secret word has not been revealed 
 
-        def start_stop():
+        def reveal_word():                               
+            global secret, word                          
+            secret = not secret                          
+            button_id = "RevealWord"                     
+            secretButton = Element(button_id)            
+            if secret:                                   
+               secretButton.write("Reveal Secret Word")  
+            else:                                        
+               secretButton.write(word)                  
+
+        def start_stop():                            
             global start                             
             start = not start                        
             upper_wordList()                         
@@ -496,11 +509,63 @@
                 wordList[j] = wordList[j].upper()  
 
         def select_word():                                    
-            global word, wordList                             
-            if word == ".":
-                while word[0] == ".":    # Keep picking until the first letter isn't "."
-                    word = wordList[random.randint(0, len(wordList)-1)]  # pick random  
-                    print("Secret word is "+word)                                     
+            global word, code, wordList                       
+            urlString = window.location.href                  
+            #print("urlString = "+ urlString)                  
+            x = urlString.find("?code=")                      
+            if x > 0:                                         
+                #print("location = "+str(x))                   
+                c = urlString[x+6:x+11]                       
+                #print("code = "+ c)                           
+                code = c                                      
+                decode_code()                                 
+                #print("decoded word = "+word)                 
+
+            if word == ".":              # word not found in url                         
+                while word[0] == ".":    # Keep picking until the first letter isn't "." 
+                    word = wordList[random.randint(0, len(wordList)-1)]  # pick random   
+                    #print("Secret word is "+word)                                       
+
+
+        def encode_word():                
+            global word, code             #     ?code=+136/                         
+
+            s = ""                        
+            for x in range(0,5):          
+                s += str(ord(word[x]))    #   "AGILE" -->  "6571737669"                  
+            y = int(s)                    #   make it an integer                         
+            y -= 2222222222               #   subtract 2,222,222,222  == 4349515447      
+            y_str = str(y)                #   "4349515447"                               
+            s = ""                                                                       
+            for x in range(1,9,2):        #   1,3,5,7,9                                  
+                s += ascii(y_str[x:x+1])  #   "+136/"                                    
+            code = s                      #                                              
+
+        def decode_code():                
+            global word, code             
+
+            s = ""                        
+            for x in range(0,5):          
+                s += str(ord(code[x]))    #   "+136/" -->  "4349515447"                  
+                #print("s = "+s)                        
+            y = int(s)                    #   make it an integer                         
+            y += 2222222222               #   add 2,222,222,222  == 6571737669           
+            y_str = str(y)                #   "6571737669"                               
+            #print("y_str = "+y_str)                    
+            s = ""                                                                       
+            for x in range(0,10,2):        #   1,3,5,7,9                                  
+                mid = y_str[x:x+2]         #   65, 71, 73, 76, 69                         
+                midnum = int(mid)                              
+                midchar = chr(midnum)      #    A, G, I, L, E                             
+                #print("mid,midnum,midchar="+mid+" "+str(midnum)+" "+midchar)               
+                s += midchar  #   "AGILE"                                    
+                #print("x,s = "+ str(x) + " " + s)   
+            word = s                      #                                              
+
+
+
+
+
 
         def key_click(k:int):
             global row, col, start, guess, win  
@@ -555,6 +620,8 @@
             start = False                        
             guess = ""                           
             word  = "."                          
+            secret = False                       
+            reveal_word()                        
             reset_keyboard()                     
             reset_gameboard()                    
             show_message("Click [Start Game]; Use keyboard below to enter guess.  Click [Enter] to test answer:")
@@ -627,9 +694,10 @@
         def show_message(m: str):                                                                
             myCell = Element("message")              
             myCell.write(m)                     
-        
-        
-        </py-script>                
+
+            return                                                                               
+
+        </py-script>
 
         <table border="0" cellspacing="3" cellpadding="3" align="center" WIDTH="250" >
             <caption> This is the game area</caption>
@@ -681,6 +749,7 @@
 
         <div align = "center">
         <button py-click="start_stop()" id="StartStop", class="py-button">Start Game</button>
+        <button py-click="reveal_word()" id="RevealWord", class="py-button">Reveal Secret Word</button>
         <br></br>
         <textarea id="message" name="message" rows="1" cols="85" readonly align="center">Click [Start Game]; Use keyboard below to enter guess.  Click [Enter] to test answer:</textarea>
         <p></p>
