@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,33 +7,52 @@
         <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
         <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
-        <style>
+        <style type="text/css">
         .button {
           background-color: #4CAF50;          
           border: none;
           color: white;
-          padding: 15px 32px;
+          padding: 10px 30px;
           text-align: center;
           text-decoration: none;
           display: inline-block;
-          font-size: 16px;
+          font-size: 14px;
           margin: 4px 2px;
           cursor: pointer;
         }
         .button-container {
           display: flex;
         }
+
+        #window_wrap { width:700px; margin:0 auto; border:3px solid red; }
+        #window_head { background-color:LightBlue; font-size:50px; text-align:center; }
+        #window_body { overflow:auto; }
+        #window_sidebar { float:right; width:60px; background-color:white; min-height:200px; }
+
+        .br {
+            display: block;
+            margin-bottom: 0em;
+        }
+
+        .brsmall {
+            display: block;
+            margin-bottom: 0.3em;
+        }
+
+        .brmedium {
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        .brlarge {
+            display: block;
+            margin-bottom: 2em;
+        }
         </style>
-
-        <py-env>                       
-             - paths:                  
-                 - /MyWord.py          
-        </py-env>                      
-
     </head>
 
-
     <body>
+
         <py-script>
 
         import random, sys, os      
@@ -694,101 +712,113 @@
         def show_message(m: str):                                                                
             myCell = Element("message")              
             myCell.write(m)                     
+                                                                        
+        def send_word():                                                                
+            return    
+            #myCell = Element("message")              
+            #myCell.write(m)                     
 
-            return                                                                               
 
         </py-script>
 
-        <table border="0" cellspacing="3" cellpadding="3" align="center" WIDTH="250" >
-            <caption> This is the game area</caption>
-          <tbody style="font-size: 24px" face="Garamond";>
-            <tr>
-                <td id="row_1_1" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_1_2" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_1_3" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_1_4" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_1_5" bgcolor="LightGray" width="40" height="45" align="center"> 
-            </tr>
-            <tr>
-                <td id="row_2_1" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_2_2" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_2_3" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_2_4" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_2_5" bgcolor="LightGray" width="40" height="45" align="center"> 
-            </tr>
-            <tr>
-                <td id="row_3_1" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_3_2" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_3_3" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_3_4" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_3_5" bgcolor="LightGray" width="40" height="45" align="center"> 
-            </tr>
-            <tr>
-                <td id="row_4_1" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_4_2" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_4_3" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_4_4" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_4_5" bgcolor="LightGray" width="40" height="45" align="center"> 
-            </tr>
-            <tr>
-                <td id="row_5_1" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_5_2" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_5_3" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_5_4" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_5_5" bgcolor="LightGray" width="40" height="45" align="center"> 
-            </tr>
-            <tr>
-                <td id="row_6_1" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_6_2" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_6_3" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_6_4" bgcolor="LightGray" width="40" height="45" align="center"> 
-                <td id="row_6_5" bgcolor="LightGray" width="40" height="45" align="center"> 
-            </tr>
-            </tbody>
-        </table>
 
-        <div align = "center">
-        <button py-click="start_stop()" id="StartStop", class="py-button">Start Game</button>
-        <button py-click="reveal_word()" id="RevealWord", class="py-button">Reveal Secret Word</button>
-        <br></br>
-        <textarea id="message" name="message" rows="1" cols="85" readonly align="center">Click [Start Game]; Use keyboard below to enter guess.  Click [Enter] to test answer:</textarea>
-        <p></p>
 
-          <button py-click="key_click(81)" id="K81" class="py-button">Q</button>
-          <button py-click="key_click(87)" id="K87" class="py-button">W</button>
-          <button py-click="key_click(69)" id="K69" class="py-button">E</button>
-          <button py-click="key_click(82)" id="K82" class="py-button">R</button>
-          <button py-click="key_click(84)" id="K84" class="py-button">T</button>
-          <button py-click="key_click(89)" id="K89" class="py-button">Y</button>
-          <button py-click="key_click(85)" id="K85" class="py-button">U</button>
-          <button py-click="key_click(73)" id="K73" class="py-button">I</button>
-          <button py-click="key_click(79)" id="K79" class="py-button">O</button>
-          <button py-click="key_click(80)" id="K80" class="py-button">P</button>
-
-        <p></p>
-
-          <button py-click="key_click(65)" id="K65" class="py-button">A</button>
-          <button py-click="key_click(83)" id="K83" class="py-button">S</button>
-          <button py-click="key_click(68)" id="K68" class="py-button">D</button>
-          <button py-click="key_click(70)" id="K70" class="py-button">F</button>
-          <button py-click="key_click(71)" id="K71" class="py-button">G</button>
-          <button py-click="key_click(72)" id="K72" class="py-button">H</button>
-          <button py-click="key_click(74)" id="K74" class="py-button">J</button>
-          <button py-click="key_click(75)" id="K75" class="py-button">K</button>
-          <button py-click="key_click(76)" id="K76" class="py-button">L</button>
-          <button py-click="key_click(13)" id="K13" class="py-button">[ENTER]</button>
-
-        <p></p>
-
-          <button py-click="key_click(90)" id="K90" class="py-button">Z</button>
-          <button py-click="key_click(88)" id="K88" class="py-button">X</button>
-          <button py-click="key_click(67)" id="K67" class="py-button">C</button>
-          <button py-click="key_click(86)" id="K86" class="py-button">V</button>
-          <button py-click="key_click(66)" id="K66" class="py-button">B</button>
-          <button py-click="key_click(78)" id="K78" class="py-button">N</button>
-          <button py-click="key_click(77)" id="K77" class="py-button">M</button>
-          <button py-click="key_click(8)"  id="K8"  class="py-button">[BS <--]</button>
-
-        </div>
+      <div id="window_wrap">
+              <div id="window_head" align="center">
+                <b>MyWord!</b>
+              </div>
+              <div id="window_body">
+                  <div id="window_sidebar">                                 
+                    <span class="brsmall"></span>                                                 
+                    <button py-click="start_stop()" id="StartStop", class="py-button">Start</button>
+                    <span class="brsmall"></span>
+                    <button py-click="reveal_word()" id="RevealWord", class="py-button">Hint</button>
+                    <span class="brsmall"></span>
+                    <button py-click="send_word()" id="SendWord", class="py-button">Send</button>
+                  </div>                                                    
+                  <div id="window_main">
+                      <table border="0" cellspacing="3" cellpadding="3" align="center" WIDTH="250" >
+                         <tbody style="font-size: 24px" face="Garamond";>
+                               <tr>
+                                   <td id="row_1_1" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_1_2" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_1_3" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_1_4" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_1_5" bgcolor="LightGray" width="30" height="35" align="center"> 
+                               </tr>
+                               <tr>
+                                   <td id="row_2_1" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_2_2" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_2_3" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_2_4" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_2_5" bgcolor="LightGray" width="30" height="35" align="center"> 
+                               </tr>
+                               <tr>
+                                   <td id="row_3_1" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_3_2" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_3_3" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_3_4" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_3_5" bgcolor="LightGray" width="30" height="35" align="center"> 
+                               </tr>
+                               <tr>
+                                   <td id="row_4_1" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_4_2" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_4_3" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_4_4" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_4_5" bgcolor="LightGray" width="30" height="35" align="center"> 
+                               </tr>
+                               <tr>
+                                   <td id="row_5_1" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_5_2" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_5_3" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_5_4" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_5_5" bgcolor="LightGray" width="30" height="35" align="center"> 
+                               </tr>
+                               <tr>
+                                   <td id="row_6_1" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_6_2" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_6_3" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_6_4" bgcolor="LightGray" width="30" height="35" align="center"> 
+                                   <td id="row_6_5" bgcolor="LightGray" width="30" height="35" align="center"> 
+                               </tr>
+                          </tbody>
+                      </table>                                
+                      <div align = "center">
+                        <textarea id="message" name="message" rows="1" cols="85" readonly align="center">Click [Start Game]; Use keyboard below to enter guess.  Click [Enter] to test answer:</textarea>
+                        <p></p>
+                        <button py-click="key_click(81)" id="K81" class="py-button">Q</button>
+                        <button py-click="key_click(87)" id="K87" class="py-button">W</button>
+                        <button py-click="key_click(69)" id="K69" class="py-button">E</button>
+                        <button py-click="key_click(82)" id="K82" class="py-button">R</button>
+                        <button py-click="key_click(84)" id="K84" class="py-button">T</button>
+                        <button py-click="key_click(89)" id="K89" class="py-button">Y</button>
+                        <button py-click="key_click(85)" id="K85" class="py-button">U</button>
+                        <button py-click="key_click(73)" id="K73" class="py-button">I</button>
+                        <button py-click="key_click(79)" id="K79" class="py-button">O</button>
+                        <button py-click="key_click(80)" id="K80" class="py-button">P</button>
+                        <span class="brsmall"></span> 
+                        <button py-click="key_click(65)" id="K65" class="py-button">A</button>
+                        <button py-click="key_click(83)" id="K83" class="py-button">S</button>
+                        <button py-click="key_click(68)" id="K68" class="py-button">D</button>
+                        <button py-click="key_click(70)" id="K70" class="py-button">F</button>
+                        <button py-click="key_click(71)" id="K71" class="py-button">G</button>
+                        <button py-click="key_click(72)" id="K72" class="py-button">H</button>
+                        <button py-click="key_click(74)" id="K74" class="py-button">J</button>
+                        <button py-click="key_click(75)" id="K75" class="py-button">K</button>
+                        <button py-click="key_click(76)" id="K76" class="py-button">L</button>
+                        <button py-click="key_click(13)" id="K13" class="py-button">[ENTER]</button>
+                        <span class="brsmall"></span> 
+                        <button py-click="key_click(90)" id="K90" class="py-button">Z</button>
+                        <button py-click="key_click(88)" id="K88" class="py-button">X</button>
+                        <button py-click="key_click(67)" id="K67" class="py-button">C</button>
+                        <button py-click="key_click(86)" id="K86" class="py-button">V</button>
+                        <button py-click="key_click(66)" id="K66" class="py-button">B</button>
+                        <button py-click="key_click(78)" id="K78" class="py-button">N</button>
+                        <button py-click="key_click(77)" id="K77" class="py-button">M</button>
+                        <button py-click="key_click(8)"  id="K8"  class="py-button">[BS <--]</button>
+                      </div>                                
+                  </div>                                    
+          </div>                                          
+      </div>                                             
     </body>
 </html>
