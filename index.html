@@ -85,10 +85,11 @@
 
         with open('quotedWords.txt', "r") as qw:
             for line in qw:
-                wordList.extend(line.split() )
+                wordList.extend(line.split())
             for j in range(0,len(wordList)):
                 wordList[j] = wordList[j].replace(',','').replace('"','').upper()
-       #     print(wordList)
+       
+        print(wordList)
             
             
         winMessage = ["","","","","","",""]
