@@ -68,6 +68,11 @@
 
     <body>
 
+        <py-config>
+          [[fetch]]
+          files = ['quotedWords.txt']
+        </py-config>
+
         <py-script>
 
         import random, sys, os      
@@ -76,6 +81,9 @@
         from js import window       
         from os.path import exists  
 
+        with open('quotedWords.txt','r') as qw:   
+            print(qw.read())
+            
         wordList = ["abate", "abbey", "abbot", "abets", "abhor", "abide", "abode", "abort", 
         "about", "above", "abuse", "abuts", "abyss", ".ached", ".aches", ".acids", 
         "acing", ".ackee", "acorn", ".acres", "acrid", ".acted", "actin", "actor", 
