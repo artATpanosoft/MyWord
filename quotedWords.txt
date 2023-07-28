@@ -1,4 +1,4 @@
-["abate", "abbey", "abbot", "abets", "abhor", "abide", "abode", "abort", 
+"abate", "abbey", "abbot", "abets", "abhor", "abide", "abode", "abort", 
 "about", "above", "abuse", "abuts", "abyss", ".ached", ".aches", ".acids", 
 "acing", ".ackee", "acorn", ".acres", "acrid", ".acted", "actin", "actor", 
 "acute", "adage", "adapt", "added", "adder", "addle", "adept", "adieu", 
@@ -412,4 +412,4 @@
 ".zills", ".zimbi", ".zimbs", ".zinco", ".zincs", ".zincy", ".zineb", ".zines", 
 ".zings", "zingy", ".zinke", ".zinky", ".zinos", "zippo", ".zippy", ".ziram", 
 ".zitis", ".zitti", ".zitty", ".zizel", ".zizit", ".zlote", ".zloty", ".zoaea", 
-".zobos", ".zobus", ".zocco", ".zoeae", ".zoeal" ] 
+".zobos", ".zobus", ".zocco", ".zoeae", ".zoeal" 
