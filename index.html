@@ -85,7 +85,7 @@
 
         with open('quotedWords.txt', "r") as qw:
             for line in qw:
-                wordList.extend(line.split().replace(',','').replace('"','').replace("[",'').replace("]",'').upper() )
+                wordList.extend(line.split() )
             print(wordList)
             
         #with open('quotedWords.txt','r') as qw:   
