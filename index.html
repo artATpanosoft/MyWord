@@ -82,10 +82,10 @@
         from os.path import exists  
 
         wordList = [] 
-            
+
         with open('quotedWords.txt', "r") as qw:
             for line in qw:
-                wordList.extend(line.split())
+                wordList.extend(line.split().replace(',','').replace('"','').replace("[",'').replace("]",'').upper() )
             print(wordList)
             
         #with open('quotedWords.txt','r') as qw:   
