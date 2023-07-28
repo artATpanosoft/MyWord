@@ -81,17 +81,14 @@
         from js import window       
         from os.path import exists  
 
-        wordList = [] 
+        #wordList = [] 
 
-        with open('quotedWords.txt', "r") as qw:
-            for line in qw:
-                wordList.extend(line.split() )
-            for j in range(0,len(wordList)):
-                wordList[j] = wordList[j].replace(',','').replace('"','').upper()
-            print(wordList)
-            
-        #with open('quotedWords.txt','r') as qw:   
-        #    print(qw.readlines())
+        #with open('quotedWords.txt', "r") as qw:
+        #    for line in qw:
+        #        wordList.extend(line.split() )
+        #    for j in range(0,len(wordList)):
+        #        wordList[j] = wordList[j].replace(',','').replace('"','').upper()
+        #    print(wordList)
             
         wordList = ["abate", "abbey", "abbot", "abets", "abhor", "abide", "abode", "abort", 
         "about", "above", "abuse", "abuts", "abyss", ".ached", ".aches", ".acids", 
@@ -509,6 +506,8 @@
         ".zitis", ".zitti", ".zitty", ".zizel", ".zizit", ".zlote", ".zloty", ".zoaea", 
         ".zobos", ".zobus", ".zocco", ".zoeae", ".zoeal" ] 
 
+        print(wordList)
+            
         winMessage = ["","","","","","",""]
         winMessage[1] ="Unbelievable:  Genius or Luck?"
         winMessage[2] ="Truly Exceptional:  Nice playing!"
