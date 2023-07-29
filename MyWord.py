@@ -1,4 +1,3 @@
-            
         winMessage = ["","","","","","",""]
         winMessage[1] ="Unbelievable:  Genius or Luck?"
         winMessage[2] ="Truly Exceptional:  Nice playing!"
@@ -43,7 +42,7 @@
         def start_stop():                            
             global start                             
             start = not start                        
-            upper_wordList()                         
+            #upper_wordList()                         
             select_word()                            
             reset_keyboard()                         
             button_id = "StartStop"                  
@@ -55,8 +54,8 @@
                reset_game()                          
 
         def upper_wordList():                  
-          global wordList                         
-          for j in range(0,len(wordList)):        
+            global wordList                         
+            for j in range(0,len(wordList)):        
                 wordList[j] = wordList[j].upper()  
 
         def select_word():                                    
