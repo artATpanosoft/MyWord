@@ -160,14 +160,11 @@
         def select_word():                                    
             global word, code, wordList                       
             urlString = window.location.href                  
-            print("urlString="+urlString)
             x = urlString.find("?code=")                      
-            print("x="+str(x))
             if x > 0:                                         
                 c = urlString[x+6:x+11]                       
                 code = c                                      
                 decode_code()                                 
-                print("word="+word)
             if word == ".":              # word not found in url                         
                 while word[0] == ".":    # Keep picking until the first letter isn't "." 
                     word = wordList[random.randint(0, len(wordList)-1)]  # pick random   
