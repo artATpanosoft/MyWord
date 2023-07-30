@@ -120,6 +120,9 @@
             secret = not secret                          
             button_id = "Hint"                     
             hintButton = Element(button_id)            
+            if len(word) < 5:                          
+                hintButton.write("No Hint")            
+                return                                 
             if secret:                                   
                hintButton.write("Hint")  
             else:                                        
@@ -264,6 +267,7 @@
             previousGuess = ""                   
             word  = "."                          
             secret = False                       
+            hint()
             reset_keyboard()                     
             reset_gameboard()                    
             show_message(startMessage)           
