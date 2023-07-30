@@ -166,13 +166,15 @@
                 c = urlString[x+6:x+30]                       
                 code = c                                      
                 print("code="+c)
-                word = "AGILE"           #  call:  decode_code()                                 
+                decode_code()                                 
+                print("word ="+word)
+
             if word == ".":              # word not found in url                         
                 while word[0] == ".":    # Keep picking until the first letter isn't "." 
                     word = wordList[random.randint(0, len(wordList)-1)]  # pick random   
 
         def encode_word():                
-            global word, code                #                              
+            global word, code, fib                #                              
 
             s = ""                        
             for x in range(0,5):          
@@ -180,12 +182,19 @@
             code = s                         #                                              
                 
         def decode_code():                
-            global word, code             
+            global word, code, fib             
             
-            s = ""                        
-            for x in range(0,len(code)):          
-                s += chr(ord(code[x])+fib[x])    #   add0 fib[x] to character's ascii value                  
-            word = s                       #                                              
+            #  code == %3e%42%41%3f%30 == >BA?0
+            code = code.replace("%","")               #  ==>   3e 42 41 3f 30
+            s = ""
+            for z in range(0,9,2):
+               s += chr(int(code[z:z+2],16)+fib[z])        #  ==>  62 66 65 63 48 ==> 65 71 73 76 69 ==> A G I L E
+            word = s 
+
+            #s = ""                        
+            #for x in range(0,len(code)):          
+            #    s += chr(ord(code[x])+fib[x])    #   add0 fib[x] to character's ascii value                  
+            #word = s                       #                                              
                 
         def key_click(k:int):
             global row, col, start, guess, win, sending                       
