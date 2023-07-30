@@ -185,10 +185,13 @@
             global word, code, fib             
             
             #  code == %3e%42%41%3f%30 == >BA?0
+            print("code="+ code)
             code = code.replace("%","")               #  ==>   3e 42 41 3f 30
+                print("code="+code)
             s = ""
-            for z in range(0,9,2):
-               s += chr(int(code[z:z+2],16)+fib[z])        #  ==>  62 66 65 63 48 ==> 65 71 73 76 69 ==> A G I L E
+            for z in range(0,5):
+               print("z,code chars="+ str(z)+ code[2*z:2*z+2])
+               s += chr(int(code[2*z:2*z+2],16)+fib[z])        #  ==>  62 66 65 63 48 ==> 65 71 73 76 69 ==> A G I L E
             word = s 
 
             #s = ""                        
