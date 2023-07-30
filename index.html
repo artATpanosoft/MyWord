@@ -162,9 +162,11 @@
             urlString = window.location.href                  
             x = urlString.find("?code=")                      
             if x > 0:                                         
-                c = urlString[x+6:x+11]                       
+                print("url="+urlString)
+                c = urlString[x+6:x+30]                       
                 code = c                                      
-                decode_code()                                 
+                print("code="+c)
+                word = "AGILE"           #  call:  decode_code()                                 
             if word == ".":              # word not found in url                         
                 while word[0] == ".":    # Keep picking until the first letter isn't "." 
                     word = wordList[random.randint(0, len(wordList)-1)]  # pick random   
@@ -179,9 +181,9 @@
                 
         def decode_code():                
             global word, code             
-
+            
             s = ""                        
-            for x in range(0,5):          
+            for x in range(0,len(code)):          
                 s += chr(ord(code[x])+fib[x])    #   add0 fib[x] to character's ascii value                  
             word = s                       #                                              
                 
