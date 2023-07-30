@@ -160,12 +160,14 @@
         def select_word():                                    
             global word, code, wordList                       
             urlString = window.location.href                  
+            print("urlString="+urlString)
             x = urlString.find("?code=")                      
+            print("x="+str(x))
             if x > 0:                                         
                 c = urlString[x+6:x+11]                       
                 code = c                                      
                 decode_code()                                 
-
+                print("word="+word)
             if word == ".":              # word not found in url                         
                 while word[0] == ".":    # Keep picking until the first letter isn't "." 
                     word = wordList[random.randint(0, len(wordList)-1)]  # pick random   
@@ -177,8 +179,6 @@
             for x in range(0,5):          
                 s += chr(ord(word[x])-fib[x])    #   subtract fib[x] from character's ascii value                  
             code = s                         #                                              
-            print("word,code="+word+" "+code)
-            decode_code()
                 
         def decode_code():                
             global word, code             
@@ -187,7 +187,6 @@
             for x in range(0,5):          
                 s += chr(ord(code[x])+fib[x])    #   add0 fib[x] to character's ascii value                  
             word = s                       #                                              
-            print("code,word="+code+" "+word)
                 
         def key_click(k:int):
             global row, col, start, guess, win, sending                       
