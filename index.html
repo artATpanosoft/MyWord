@@ -346,6 +346,9 @@
             key_id = "K"+str(k)
             document.getElementById(key_id).style.backgroundColor = color
 
+        def color_button(id, color:str):
+            document.getElementById(id).style.backgroundColor = color
+                
         def show_message(m: str):                                                                
             myCell = Element("message")              
             myCell.write(m)                     
