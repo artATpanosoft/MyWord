@@ -10,12 +10,12 @@
         <style type="text/css">
 
         .td {           
-          background-color: LightBlue;
+          background-color: MediumAquamarine;
           color: white;
         }
 
         .button {
-          background-color: #4CAF50;          
+          background-color: MediumAquamarine;          
           border: none;
           color: white;
           padding: 10px 30px;
@@ -29,7 +29,20 @@
         .button-container {
           display: flex;
         }
-
+        .py-button {
+          --tw-text-opacity: 1;
+          color: rgba(255, 255, 255, var(--tw-text-opacity));
+          padding: 0.5rem;
+          --tw-bg-opacity: 1;
+          background-color: rgba(102,205,170, var(--tw-bg-opacity));
+          --tw-border-opacity: 1;
+          border-color: rgba(37, 99, 235, var(--tw-border-opacity));
+          border-width: 1px;
+          border-radius: 0.25rem;
+          cursor: pointer;
+        }
+     
+        
         #window_wrap { width:700px; margin:0 auto; border:3px solid red; }
         #window_head { background-color:LightBlue; font-size:50px; text-align:center; }
         #window_body { overflow:auto; }
@@ -143,7 +156,7 @@
             start = not start                        
             #upper_wordList()                         
             select_word()                            
-            reset_keyboard()                         
+            #reset_keyboard()                         
             button_id = "StartStop"                  
             startButton = Element(button_id)         
             if start:                                
@@ -267,16 +280,19 @@
             show_message(startMessage)           
 
         def reset_keyboard():                    
-            color_key(8, "Blue")            
-            color_key(13, "Blue")           
+            color_key(8, "MediumAquamarine")            
+            color_key(13, "MediumAquamarine")           
             for k in range(65,91):               
-                 color_key(k, "Blue")
+                 color_key(k, "MediumAquamarine")
 
         def reset_gameboard():                       
-            for row in range(1,7):                   
-               for col in range(1,6):                
-                   print_letter(row,col,32)               # write space         
-                   color_letter(row, col, "LightBlue")    # color the letter    
+            for r in range(1,7):                   
+               for c in range(1,6):                
+                   print_letter(r,c,32)               # write space         
+                   color_letter(r, c, "MediumAquamarine")    # color the letter    
+            color_button("StartStop", "MediumAquamarine")
+            color_button("Hint", "MediumAquamarine")
+            color_button("SendWord", "MediumAquamarine")
 
 
         def print_letter(r:int, c:int, k:int):       
@@ -349,62 +365,62 @@
               <div id="window_body">
                   <div id="window_sidebar">                                 
                     <span class="brsmall"></span>                                                 
-                    <button py-click="start_stop()" id="StartStop", class="py-button">Start</button>
+                    <button py-click="start_stop()" id="StartStop", bgcolor="MediumAquamarine" title="Start or Reset Game." class="py-button">Start</button>
                     <span class="brsmall"></span>
-                    <button py-click="hint()" id="Hint", class="py-button">Hint</button>
+                    <button py-click="hint()" id="Hint", bgcolor="MediumAquamarine" title="Get one letter to use." class="py-button">Hint</button>
                     <span class="brsmall"></span>
-                    <button py-click="send_word()" id="SendWord", class="py-button">Send</button>
+                    <button py-click="send_word()" id="SendWord", bgcolor="MediumAquamarine" title="Send a Challenge Word - MyWord!" class="py-button">Send</button>
                   </div>                                                    
                   <div id="window_main">
                       <table  border="0" cellspacing="3" cellpadding="3" align="center" WIDTH="250" >
                          <tbody style="font-size: 24px" face="Garamond";>
                                <tr>
                                    <td id="row_1_0" bgcolor="white" width="30" height="35" align="center"> 
-                                   <td id="row_1_1" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_1_2" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_1_3" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_1_4" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_1_5" bgcolor="LightBlue" width="30" height="35" align="center"> 
+                                   <td id="row_1_1" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_1_2" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_1_3" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_1_4" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_1_5" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
                                </tr>
                                <tr>
                                    <td id="row_2_0" bgcolor="white" width="30" height="35" align="center"> 
-                                   <td id="row_2_1" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_2_2" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_2_3" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_2_4" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_2_5" bgcolor="LightBlue" width="30" height="35" align="center"> 
+                                   <td id="row_2_1" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_2_2" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_2_3" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_2_4" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_2_5" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
                                </tr>
                                <tr>
                                    <td id="row_3_0" bgcolor="white" width="30" height="35" align="center"> 
-                                   <td id="row_3_1" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_3_2" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_3_3" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_3_4" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_3_5" bgcolor="LightBlue" width="30" height="35" align="center"> 
+                                   <td id="row_3_1" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_3_2" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_3_3" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_3_4" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_3_5" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
                                </tr>
                                <tr>
                                    <td id="row_4_0" bgcolor="white" width="30" height="35" align="center"> 
-                                   <td id="row_4_1" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_4_2" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_4_3" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_4_4" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_4_5" bgcolor="LightBlue" width="30" height="35" align="center"> 
+                                   <td id="row_4_1" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_4_2" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_4_3" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_4_4" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_4_5" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
                                </tr>
                                <tr>
                                    <td id="row_5_0" bgcolor="white" width="30" height="35" align="center"> 
-                                   <td id="row_5_1" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_5_2" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_5_3" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_5_4" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_5_5" bgcolor="LightBlue" width="30" height="35" align="center"> 
+                                   <td id="row_5_1" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_5_2" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_5_3" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_5_4" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_5_5" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
                                </tr>
                                <tr>
                                    <td id="row_6_0" bgcolor="white" width="30" height="35" align="center"> 
-                                   <td id="row_6_1" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_6_2" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_6_3" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_6_4" bgcolor="LightBlue" width="30" height="35" align="center"> 
-                                   <td id="row_6_5" bgcolor="LightBlue" width="30" height="35" align="center"> 
+                                   <td id="row_6_1" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_6_2" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_6_3" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_6_4" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
+                                   <td id="row_6_5" bgcolor="MediumAquamarine" width="30" height="35" align="center"> 
                                </tr>
                           </tbody>
                       </table>                                
