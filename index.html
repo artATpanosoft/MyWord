@@ -173,9 +173,14 @@
         def encode_word():                
             global word, code, fib                #                              
 
+            print("in encode_word(), word=:"+word)
             s = ""                        
             for x in range(0,5):          
-                s += chr(ord(word[x])-fib[x])    #   subtract fib[x] from character's ascii value                  
+                o = ord(word[x])-fib[x]    #   subtract fib[x] from character's ascii value == an int                 
+                h = hex(o)                 #   change int to hex with "0x" in front, e.g. hex(62) = "0x3e"
+                h = h.replace("0x","%")    #   replace 0x with % ==>  "%3e"
+                s += h                     #   concatenate  
+            print(encoded word, s="+s)
             code = s                         #                                              
                 
         def decode_code():                
