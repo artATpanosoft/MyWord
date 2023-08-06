@@ -95,16 +95,18 @@
         from os.path import exists  
 
         wordList = [] 
+        guessList = []
 
         with open('quotedWords.txt', "r") as qw:
             for line in qw:
                 wordList.extend(line.split())
-            for j in range(0,len(wordList)):
-                wordList[j] = wordList[j].replace(',','').replace('"','').upper()
-        </py-script>
-
-        <py-script> 
-                     
+        for j in range(0,len(wordList)):
+            wordList[j] = wordList[j].replace(',','').replace('"','').upper()
+        for j in range(0,len(wordList)):
+            guessList[j] = wordList[j].replace('.','')                             # eliminate periods: guessList has all words
+            
+      
+                             
         winMessage = ["","","","","","",""]
         winMessage[1] ="Unbelievable:  Genius or Luck?"
         winMessage[2] ="Truly Exceptional:  Nice playing!"
@@ -303,9 +305,9 @@
 
         def checkGuess(userGuess):
             global row, col, word, win, wordList, allowed         
-            global badWord, winMessage, loseMessage               
+            global badWord, winMessage, loseMessage, guessList               
 
-            if userGuess in wordList:                                     
+            if userGuess in guessList:                                #  any word in guessList allowed as a guess     
                 allowed = True                                            
             else:                                                         
                 show_message(userGuess + ": " + badWord)                  
