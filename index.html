@@ -100,10 +100,12 @@
         with open('quotedWords.txt', "r") as qw:
             for line in qw:
                 wordList.extend(line.split())
-        for j in range(0,len(wordList)):
-            wordList[j] = wordList[j].replace(',','').replace('"','').upper()
-        for j in range(0,len(wordList)):
-            guessList.extend(wordList[j].replace('.',''))                             # eliminate periods: guessList has all words
+            for j in range(0,len(wordList)):
+                wordList[j] = wordList[j].replace(',','').replace('"','').upper()
+
+        guessList = wordList
+        for j in range(0,len(guessList)):
+            guessList[j] = guessList[j].replace('.','')                             # eliminate periods: guessList has all words
             
       
                              
