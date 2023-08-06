@@ -103,7 +103,7 @@
         for j in range(0,len(wordList)):
             wordList[j] = wordList[j].replace(',','').replace('"','').upper()
         for j in range(0,len(wordList)):
-            guessList[j] = wordList[j].replace('.','')                             # eliminate periods: guessList has all words
+            guessList.extend(wordList[j].replace('.',''))                             # eliminate periods: guessList has all words
             
       
                              
